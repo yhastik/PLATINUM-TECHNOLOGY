@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+    <style> 
+        html { height: 100%; 
+         scroll-behavior: smooth;}
+        
+        body {
+         margin: 0;
+         height: 100%;
+         background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(image/fon.png);
+         background-size: cover;
+         background-attachment: fixed;
+         background-color: rgba(0,0,0,)
+        } 
+    </style>
+
+    <!-- Подключаем CSS файл CustomSelect -->
+    <link rel="stylesheet" href="CSS/itc-custom-select.css">
+    <!-- Подключаем JavaScript файл CustomSelect -->
+    <script defer src="scripts/itc-custom-select.js"></script>
+    <!-- JS-код в котором инициализируем экземпляр CustomSelect для #select-1 -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        ItcCustomSelect.create('#select-1', {
+        name: 'price',
+        targetValue: 'Базовая',
+        options: [
+            ['базовая', 'Базовая'],
+            ['стандартная', 'Стандартная'],
+            ['полная', 'Полная'],
+        ],
+        onSelected(select, option) {
+            // выбранное значение
+            console.log(`Выбранное значение: ${select.value}`);
+            // индекс выбранной опции
+            console.log(`Индекс выбранной опции: ${select.selectedIndex}`);
+            // выбранный текст опции
+            const text = option ? option.textContent : '';
+            console.log(`Выбранный текст опции: ${text}`);
+        },
+        });
+        document.querySelector('.itc-select').addEventListener('itc.select.change', (e) => {
+        const btn = e.target.querySelector('.itc-select__toggle');
+        // выбранное значение
+        console.log(`Выбранное значение: ${btn.value}`);
+        // индекс выбранной опции
+        console.log(`Индекс выбранной опции: ${btn.dataset.index}`);
+        // выбранный текст опции
+        const selected = e.target.querySelector('.itc-select__option_selected');
+        const text = selected ? selected.textContent : '';
+        console.log(`Выбранный текст опции: ${text}`);
+        });
+    })
+    </script>
+
+
+
+    <title>ORDERING A SERVICE</title>
+</head>
+<body>
+
+    <!--Шапка сайта-->
+    <header class="header">
+        <div class="container">
+            <div class="logo"><></div>
+            <div class="logo-title"><a href="index.html">PLATINUM TECHNOLOGY</a></div>
+            <nav class="menu">
+                <ul>
+                    <li class="menu-item"><a href="index.html"><p class="scale">ГЛАВНАЯ</p></a></li>
+                    <li class="menu-item"><a href="price.html"><p class="scale">ПРАЙС</p></a></li>
+                    <li class="menu-item"><a href="team.html"><p class="scale">КОМАНДА</p></a></li>
+                    <li class="menu-item"><a href="company.html"><p class="scale">КОМПАНИИ</p></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!--Форма покупки-->
+    <div id="inline-sell">
+        <div class="sell-price">ЗАКАЗ УСЛУГИ</div>
+        
+        <div class="form-sell"> 
+            <input class="txt-sell" placeholder="Ваше имя">
+            <input class="txt-sell" placeholder="Ваш телефон">
+            <input class="txt-sell" placeholder="Ваш e-mail">
+        </div>
+
+
+
+
+        <div class="container">
+            <!-- Кастомный селект -->
+            <div id="select-1"></div>
+        </div>
+
+
+
+        <form action="index.html" class="form-sell">
+            <button class="button-sell">ЗАКАЗАТЬ</button>
+        </form>
+    </div>
+    <script>
+          $("#scale-0").click(function() {
+            $("#scale-0").addClass('button-clicked');
+          });
+          $("#scale-1").click(function() {
+            $("#scale-1").addClass('button-clicked');
+          });
+          $("#scale-2").click(function() {
+            $("#scale-2").addClass('button-clicked');
+          });
+    </script>
+
+</body>
+</html>
